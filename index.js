@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const app = express();
-const port = 3000;
+const port = 5000;
 
-const config = require("./config/key");
-const { User } = require("./models/User");
-const { auth } = require("./middleware/auth");
+const config = require("./server/config/key");
+const { User } = require("./server/models/User");
+const { auth } = require("./server/middleware/auth");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -21,6 +21,10 @@ mongoose
 
 app.get("/", function (req, res) {
   res.send("hello world");
+});
+
+app.get("/api/hello", function (req, res) {
+  res.send("hello world~");
 });
 
 app.post("/api/users/register", function (req, res) {
